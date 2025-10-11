@@ -23,7 +23,7 @@ export class UsersService {
     return this.userModel.findByPk(id);
   }
 
-  async updateOnboardingStatus(id: string, status: boolean): Promise<[number, User[]]> {
+  async updateOnboardingStatus(id: string, status: boolean): Promise<[number]> {
     return this.userModel.update({ onboardingCompleted: status }, { where: { id } });
   }
 }
