@@ -55,8 +55,8 @@ The application is structured around several key modules that work together to p
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/nestjs-auth0-onboarding.git
-    cd nestjs-auth0-onboarding
+    git clone https://github.com/Abdul-dewaswala/nestjs-boilerplate
+    cd nestjs-boilerplate
     ```
 
 2.  **Install dependencies:**
@@ -86,6 +86,9 @@ The application is structured around several key modules that work together to p
     yarn start:dev
     ```
     The application will typically run on `http://localhost:3000`.
+
+7.  **Start the application:**
+    check api collection `http://localhost:3000/api/docs`
 
 ## Usage
 
