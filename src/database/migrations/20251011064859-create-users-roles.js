@@ -13,27 +13,21 @@ module.exports = {
       },
       auth0Id: {
         type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: null,
+        allowNull: false,
         unique: true,
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       firstName: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      middleName: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: null,
-      },
       lastName: {
         type: Sequelize.STRING,
         allowNull: true,
-        defaultValue: null,
       },
       onboardingCompleted: {
         type: Sequelize.BOOLEAN,
@@ -42,8 +36,15 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      resetPasswordToken: {
+        type: Sequelize.STRING,
         allowNull: true,
-        defaultValue: null,
+      },
+      resetPasswordExpires: {
+        type: Sequelize.DATE,
+        allowNull: true,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -106,9 +107,9 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('role_user');
     await queryInterface.dropTable('roles');
     await queryInterface.dropTable('users');
-    await queryInterface.dropTable('role_user');
     await queryInterface.sequelize.query('DROP EXTENSION IF EXISTS "uuid-ossp";');
   }
 };
