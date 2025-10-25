@@ -5,6 +5,8 @@ import databaseConfig from './config/database.config';
 import auth0Config from './config/auth0.config';
 import { User } from './models/user.model';
 import { Role } from './models/role.model';
+import { FrontModule } from './front/front.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { Role } from './models/role.model';
       }),
       inject: [ConfigService],
     }),
+    FrontModule,
+    AdminModule,
   ],
 })
 export class AppModule {}
