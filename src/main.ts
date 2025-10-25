@@ -12,13 +12,13 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('NestJS Auth0 Onboarding API')
-    .setDescription('API documentation for the NestJS Auth0 Onboarding project')
+    .setTitle('NestJS Boilerplate API Documentation')
+    .setDescription('API documentation for the NestJS Boilerplate project')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api/docs', app, document);
 
   await app.listen(process.env.PORT ?? 3000);
 }
