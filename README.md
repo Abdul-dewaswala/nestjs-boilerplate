@@ -88,6 +88,7 @@ The application is structured around several key modules that work together to p
     The application will typically run on `http://localhost:3000`.
 
 7.  **Start the application:**
+
     check api collection `http://localhost:3000/api/docs`
 
 ## Usage
