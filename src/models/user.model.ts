@@ -1,4 +1,5 @@
 import { Table, Column, Model, PrimaryKey, DataType, BelongsToMany } from 'sequelize-typescript';
+import { ApiProperty } from '@nestjs/swagger';
 import { Role } from './role.model';
 import { RoleUser } from './role-user.model';
 
@@ -13,6 +14,13 @@ export class User extends Model {
     allowNull: false,
   })
   id: string;
+
+  @ApiProperty({ example: 'https://example.com/avatar.jpg', description: 'URL to the user\'s avatar' })
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  avatar: string;
 
   @Column({
     type: DataType.STRING,
