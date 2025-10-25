@@ -1,14 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import databaseConfig from './config/database.config';
 import auth0Config from './config/auth0.config';
 import { User } from './models/user.model';
 import { Role } from './models/role.model';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -32,10 +28,6 @@ import { UsersModule } from './users/users.module';
       }),
       inject: [ConfigService],
     }),
-    AuthModule,
-    UsersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
