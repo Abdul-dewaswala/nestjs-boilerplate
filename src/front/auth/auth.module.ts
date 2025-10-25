@@ -7,6 +7,8 @@ import { JwtStrategy } from './jwt.strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from '../../models/user.model';
+import { Role } from '../../models/role.model';
+import { RoleUser } from '../../models/role-user.model';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { User } from '../../models/user.model';
       inject: [ConfigService],
     }),
     ConfigModule,
-    SequelizeModule.forFeature([User]),
+    SequelizeModule.forFeature([User, Role, RoleUser]),
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],

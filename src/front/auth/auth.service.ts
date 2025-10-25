@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/sequelize';
 import * as bcrypt from 'bcryptjs';
 import { User } from '../../models/user.model';
+import { Role } from '../../models/role.model';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
@@ -17,6 +18,8 @@ export class AuthService {
   constructor(
     @InjectModel(User)
     private userModel: typeof User,
+    @InjectModel(Role)
+    private roleModel: typeof Role,
     private jwtService: JwtService,
     private configService: ConfigService,
   ) {}
@@ -38,6 +41,11 @@ export class AuthService {
       lastName,
       auth0Id: 'local-' + email, // Placeholder for local authentication
     });
+
+    const userRole = await this.roleModel.findOne({ where: { name: 'user' } });
+    if (userRole) {
+      await user.$add('roles', [userRole.id]);
+    }
 
     const accessToken = this.generateJwtToken(user);
     return { accessToken };

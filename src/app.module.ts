@@ -5,6 +5,7 @@ import databaseConfig from './config/database.config';
 import auth0Config from './config/auth0.config';
 import { User } from './models/user.model';
 import { Role } from './models/role.model';
+import { RoleUser } from './models/role-user.model';
 import { FrontModule } from './front/front.module';
 import { AdminModule } from './admin/admin.module';
 
@@ -24,7 +25,7 @@ import { AdminModule } from './admin/admin.module';
         username: configService.get<string>('database.username'),
         password: configService.get<string>('database.password'),
         database: configService.get<string>('database.database'),
-        models: [User, Role], // Add your models here
+        models: [User, Role, RoleUser], // Add your models here
         autoLoadModels: true,
         synchronize: false, // Use migrations for schema management
       }),

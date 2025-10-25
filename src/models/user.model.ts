@@ -1,5 +1,6 @@
-import { Table, Column, Model, PrimaryKey, DataType, HasMany } from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey, DataType, BelongsToMany } from 'sequelize-typescript';
 import { Role } from './role.model';
+import { RoleUser } from './role-user.model';
 
 @Table({
   tableName: 'users',
@@ -64,6 +65,6 @@ export class User extends Model {
   })
   resetPasswordExpires: Date;
 
-  @HasMany(() => Role)
+  @BelongsToMany(() => Role, () => RoleUser)
   roles: Role[];
 }
